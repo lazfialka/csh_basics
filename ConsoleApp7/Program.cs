@@ -54,8 +54,8 @@ class Matrix
     { }
     public void Print()
     {
-        int rw = mt.GetUpperBound(0) + 1;
-        int cn = mt.GetUpperBound(1) + 1;
+        int rw = mt.GetLength(0);
+        int cn = mt.GetLength(1);
         for (int i = 0; i < rw; ++i)
         {
             for (int j = 0; j < cn; ++j)
@@ -67,15 +67,15 @@ class Matrix
     }
 
     public double FindElement(uint r, uint c) {
-        int rw = mt.GetUpperBound(0) + 1;
-        int cn = mt.GetUpperBound(1) + 1;
+        int rw = mt.GetLength(0);
+        int cn = mt.GetLength(1);
         if (c > cn || r > rw) return double.NaN;
         return (double)mt[c-1, r-1];
     }
     public int[] ColumnMeans()
     {
-        int rw = mt.GetUpperBound(0) + 1;
-        int cn = mt.GetUpperBound(1) + 1;
+        int rw = mt.GetLength(0);
+        int cn = mt.GetLength(1);
         int[] ret = new int[cn];
         for (int j = 0; j < cn; ++j)
         {
@@ -89,7 +89,7 @@ class Matrix
     }
 
     public Matrix SortRows() {
-        int rw = mt.GetUpperBound(0) + 1;
+        int rw = mt.GetLength(0);
         int cn = mt.GetUpperBound(1); // sic!
         int[,] ret = mt;
         int ovr;
@@ -112,8 +112,8 @@ class Matrix
 
     public int FindMinSumRow()
     {
-        int rw = mt.GetUpperBound(0) + 1;
-        int cn = mt.GetUpperBound(1) + 1;
+        int rw = mt.GetLength(0);
+        int cn = mt.GetLength(1);
         int ret = 0;
         int cmp = 0;
         for (int i = 0; i < rw; ++i) 
@@ -130,10 +130,10 @@ class Matrix
 
     public static Matrix Mult(Matrix amp, Matrix inp)
     {
-        int mrw = amp.mt.GetUpperBound(0) + 1;
-        int mcn = amp.mt.GetUpperBound(1) + 1;
-        int irw = inp.mt.GetUpperBound(0) + 1;
-        int icn = inp.mt.GetUpperBound(1) + 1;
+        int mrw = amp.mt.GetLength(0);
+        int mcn = amp.mt.GetLength(1);
+        int irw = inp.mt.GetLength(0);
+        int icn = inp.mt.GetLength(1);
         if (mcn != irw) {
             Console.WriteLine("Wrong sizes");
             return new Matrix(new int[0, 0]);
@@ -153,8 +153,8 @@ class Matrix
     }
 
     public Matrix FillSpiralCons() {
-        int m = mt.GetUpperBound(0) + 1;
-        int n = mt.GetUpperBound(1) + 1;
+        int m = mt.GetLength(0);
+        int n = mt.GetLength(1);
         int[,] matrix = new int[m, n];
         int value = 1;
         int top = 0;
